@@ -1,0 +1,116 @@
+/* Ajustes finos para tipografía y efectos */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #09090b;
+    color: #f4f4f5;
+}
+/* Mejora performance de fuentes web */
+@font-face {
+    font-display: swap;
+}
+/* Smooth scrolling respetando preferencias del sistema */
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+}
+/* Reducir animaciones para usuarios sensibles */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+/* Animación para la cinta (Marquee) */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 20s linear infinite;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+.pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 12px);
+}
+/* Efecto Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Animación Ken Burns (Zoom de fondo) */
+@keyframes kenburns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
+}
+.animate-kenburns {
+    animation: kenburns 20s ease-out infinite alternate;
+}
+/* Efecto Glitch (Vibración Urbana) */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+.animate-glitch {
+    animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+/* Efecto de Brasas (Fire Embers) */
+.ember {
+    position: absolute;
+    bottom: -20px;
+    width: 6px;
+    height: 6px;
+    background: #facc15; /* Amarillo marca */
+    border-radius: 50%;
+    box-shadow: 0 0 15px 2px #facc15;
+    opacity: 0;
+    animation: rise linear infinite;
+    filter: blur(1px);
+    z-index: 1; /* Detrás del texto */
+}
+@keyframes rise {
+    0% { opacity: 0; transform: translateY(0) translateX(0); }
+    10% { opacity: 1; }
+    50% { opacity: 0.8; transform: translateY(-40vh) translateX(20px); }
+    100% { opacity: 0; transform: translateY(-80vh) translateX(-20px); }
+}
+/* Efecto de Texto Contorno (Outline) */
+.text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    color: transparent;
+}
+.text-outline:hover {
+    -webkit-text-stroke: 1px #facc15;
+    color: rgba(250, 204, 21, 0.1);
+}
+/* Ocultar Scrollbar para el carrusel de testimonios */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

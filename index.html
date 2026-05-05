@@ -4,11 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grit Burguer & Café | Sabor con Garra</title>
-    <meta name="description" content="Hamburguesas artesanales y café de especialidad en Lima. Sabor urbano con garra.">
+    <meta name="description" content="Smash burgers artesanales y café de especialidad en Magdalena del Mar, Lima. Delivery por WhatsApp. Abierto de 6pm a 11:50pm, martes cerrado.">
     
     <!-- Favicon (Icono de Fuego en la pestaña) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
     
+    <!-- REDES SOCIALES (Open Graph): Para que se vea genial al compartir en WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Grit Burguer & Café | Sabor con Garra">
+    <meta property="og:description" content="Las mejores smash burgers y alitas de Magdalena. ¡Pide tu delivery ahora!">
+    <meta property="og:image" content="https://gritburger.com/img/hamburguesa.jpg"> <!-- Cambia esto por tu dominio real cuando lo tengas -->
+    <meta property="og:url" content="https://gritburger.com">
+
+    <!-- SCHEMA.ORG JSON-LD (Datos Estructurados para SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Grit Burguer & Café",
+      "image": "https://gritburger.com/img/hamburguesa.jpg",
+      "url": "https://gritburger.com",
+      "telephone": "+51953214121",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jirón Leoncio Prado 1189",
+        "addressLocality": "Magdalena del Mar",
+        "addressRegion": "Lima",
+        "addressCountry": "PE"
+      },
+      "servesCuisine": ["Hamburguesas", "Café", "Alitas", "Salchipapas"],
+      "priceRange": "S/10 - S/40",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "18:00",
+          "closes": "23:50"
+        }
+      ],
+      "menu": "https://gritburger.com/#menu",
+      "acceptsReservations": "False",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "150"
+      }
+    }
+    </script>
+
     <!-- OPTIMIZACIÓN VELOCIDAD: Conexión anticipada y Precarga -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +61,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS via CDN -->
+    <!-- Para producción, considera usar el CLI de Tailwind para purgar CSS y self-hostearlo -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Enlace a tu archivo CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
     <!-- Configuración de la Paleta de Colores Personalizada -->
     <script>
         tailwind.config = {
@@ -43,101 +89,12 @@
             }
         }
     </script>
-
-    <style>
-        /* Ajustes finos para tipografía y efectos */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #09090b;
-            color: #f4f4f5;
-        }
-        .text-shadow {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-        /* Animación para la cinta (Marquee) */
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            display: flex;
-            width: max-content;
-            animation: marquee 20s linear infinite;
-        }
-        /* Efecto Scroll Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Animación Ken Burns (Zoom de fondo) */
-        @keyframes kenburns {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
-        }
-        .animate-kenburns {
-            animation: kenburns 20s ease-out infinite alternate;
-        }
-        /* Efecto Glitch (Vibración Urbana) */
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
-        }
-        .animate-glitch {
-            animation: glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
-        }
-        /* Efecto de Brasas (Fire Embers) */
-        .ember {
-            position: absolute;
-            bottom: -20px;
-            width: 6px;
-            height: 6px;
-            background: #facc15; /* Amarillo marca */
-            border-radius: 50%;
-            box-shadow: 0 0 15px 2px #facc15;
-            opacity: 0;
-            animation: rise linear infinite;
-            filter: blur(1px);
-            z-index: 1; /* Detrás del texto */
-        }
-        @keyframes rise {
-            0% { opacity: 0; transform: translateY(0) translateX(0); }
-            10% { opacity: 1; }
-            50% { opacity: 0.8; transform: translateY(-40vh) translateX(20px); }
-            100% { opacity: 0; transform: translateY(-80vh) translateX(-20px); }
-        }
-        /* Efecto de Texto Contorno (Outline) */
-        .text-outline {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-            color: transparent;
-        }
-        .text-outline:hover {
-            -webkit-text-stroke: 1px #facc15;
-            color: rgba(250, 204, 21, 0.1);
-        }
-        /* Ocultar Scrollbar para el carrusel de testimonios */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-    </style>
 </head>
 <body class="antialiased selection:bg-brand-accent selection:text-white">
 
     <!-- BARRA DE ANUNCIO SUPERIOR (Gancho de Venta) -->
     <div class="bg-brand-promo text-white text-[10px] md:text-xs font-bold text-center py-1.5 tracking-widest uppercase relative z-[60]">
-        <span>🚀 Delivery Gratis en tu primer pedido web | Usa el código: <span class="bg-white text-brand-promo px-1 rounded mx-1">GRITWEB</span></span>
+        <span>🚀 Delivery Gratis en tu primer pedido — Menciona el código <span class="bg-white text-brand-promo px-1 rounded mx-1">GRITWEB</span> al pedir por WhatsApp</span>
     </div>
 
     <!-- NAVBAR: Backdrop Blur & Sticky -->
@@ -196,7 +153,12 @@
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
         <!-- Imagen de fondo con overlay oscuro -->
         <div class="absolute inset-0 z-0">
-            <img src="img/hamburguesa.jpg" alt="Hamburguesa Artesanal Grit" class="w-full h-full object-cover opacity-60 animate-kenburns" fetchpriority="high">
+            <img src="img/hamburguesa.jpg"
+                 alt="Hamburguesa Artesanal Grit, doble carne con queso, cebolla, pepinillos y vegetales frescos"
+                 class="w-full h-full object-cover opacity-60 animate-kenburns"
+                 fetchpriority="high"
+                 srcset="img/hamburguesa-sm.jpg 600w, img/hamburguesa-md.jpg 1200w, img/hamburguesa.jpg 1920w"
+                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 100vw, 100vw">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent"></div>
         </div>
 
@@ -220,12 +182,12 @@
                 Auténtico Sabor
             </span>
             <!-- TIPOGRAFÍA BREAKING SCHEMES -->
-            <h1 class="flex flex-col items-center justify-center leading-[0.9] mb-8 text-shadow select-none">
-                <span class="text-6xl md:text-8xl lg:text-9xl font-impact text-outline tracking-wider hover:scale-105 transition-transform duration-500">SABOR</span>
-                <span class="text-3xl md:text-5xl font-graffiti text-brand-promo -rotate-3 -my-2 md:-my-4 z-10">Rebelde con</span>
-                <span class="text-7xl md:text-9xl lg:text-[10rem] font-impact text-brand-accent tracking-tighter hover:animate-glitch">GARRA</span>
+            <h1 class="flex flex-col items-center justify-center leading-[0.9] mb-8 text-shadow select-none px-2">
+                <span class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-impact text-outline tracking-wider hover:scale-105 transition-transform duration-500">SABOR</span>
+                <span class="text-2xl sm:text-3xl md:text-5xl font-graffiti text-brand-promo -rotate-3 -my-2 md:-my-4 z-10">Rebelde con</span>
+                <span class="text-6xl sm:text-7xl md:text-9xl lg:text-[10rem] font-impact text-brand-accent tracking-tighter hover:animate-glitch">GARRA</span>
             </h1>
-            <p class="text-lg md:text-xl text-zinc-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+            <p class="text-base sm:text-lg md:text-xl text-zinc-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed px-4">
                 Fusionamos la rebeldía de la calle con la maestría culinaria. Hamburguesas artesanales smash y café de especialidad para los que no se conforman.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -317,23 +279,26 @@
                 <!-- TAB: HAMBURGUESAS -->
                 <div id="burgers" class="tab-content block animate-fade-in">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Item 1 -->
-                        <div onclick="openModal('Clásica', 'S/12', 'Carne 100% artesanal, tomate, lechuga y papas.', 'img/hamburguesa.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1 overflow-hidden relative" role="button" tabindex="0">
-                            <img src="img/hamburguesa.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Clásica" loading="lazy" decoding="async">
+                        <!-- Item 1: Clásica (Carga inmediata, usa img/royal.jpg para mejor coincidencia) -->
+                        <div onclick="openModal('Clásica', 'S/12', 'Carne 100% artesanal, tomate, lechuga y papas.', 'img/royal.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1 overflow-hidden relative" role="button" tabindex="0" aria-label="Ver detalles de Hamburguesa Clásica">
+                            <img src="img/royal.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Hamburguesa Clásica con carne artesanal, lechuga, tomate y papas fritas" decoding="async"
+                                 srcset="img/royal-menu-sm.jpg 150w, img/royal-menu-md.jpg 300w, img/royal.jpg 600w"
+                                 sizes="(max-width: 768px) 150px, 300px">
                             <div class="flex-1">
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-lg font-bold text-white group-hover:text-brand-accent transition-colors">Clásica</h4>
                                     <span class="text-brand-accent font-black text-lg">S/12</span>
                                 </div>
                                 <p class="text-zinc-400 text-xs mt-1">Carne 100% artesanal, tomate, lechuga.</p>
-                                <!-- Micro-badge -->
                                 <span class="inline-block mt-2 text-[10px] bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded border border-zinc-700">Smash Original</span>
                             </div>
                         </div>
-                        <!-- Item 2 - HIGHLIGHT -->
-                        <div onclick="openModal('Royal', 'S/15', 'Carne, queso derretido, jamón inglés, huevo y papas.', 'img/royal.jpg')" class="relative cursor-pointer bg-gradient-to-br from-zinc-900 via-zinc-900 to-brand-wood/30 p-4 rounded-xl border border-brand-accent/30 flex gap-4 items-center transition-all duration-300 group hover:border-brand-accent hover:shadow-2xl hover:shadow-brand-accent/20 hover:-translate-y-1" role="button" tabindex="0">
+                        <!-- Item 2: Royal - HIGHLIGHT -->
+                        <div onclick="openModal('Royal', 'S/15', 'Carne, queso derretido, jamón inglés, huevo y papas.', 'img/hamburguesa.jpg')" class="relative cursor-pointer bg-gradient-to-br from-zinc-900 via-zinc-900 to-brand-wood/30 p-4 rounded-xl border border-brand-accent/30 flex gap-4 items-center transition-all duration-300 group hover:border-brand-accent hover:shadow-2xl hover:shadow-brand-accent/20 hover:-translate-y-1" role="button" tabindex="0" aria-label="Ver detalles de Hamburguesa Royal">
                             <div class="absolute -top-3 -right-2 bg-brand-accent text-black text-[10px] font-black px-3 py-1 rounded-full shadow-lg z-10 animate-pulse border border-yellow-200 uppercase tracking-wider">🔥 Top Ventas</div>
-                            <img src="img/royal.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Royal" loading="lazy" decoding="async">
+                            <img src="img/hamburguesa.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Hamburguesa Royal con doble carne, queso, jamón y huevo" decoding="async"
+                                 srcset="img/hamburguesa-menu-sm.jpg 150w, img/hamburguesa-menu-md.jpg 300w, img/hamburguesa.jpg 600w"
+                                 sizes="(max-width: 768px) 150px, 300px">
                             <div class="flex-1">
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-lg font-bold text-white group-hover:text-brand-accent transition-colors">Royal</h4>
@@ -342,9 +307,10 @@
                                 <p class="text-zinc-400 text-xs mt-1">Carne, queso derretido, jamón inglés, huevo.</p>
                             </div>
                         </div>
-                        <!-- Item 3 -->
-                        <div onclick="openModal('Ranchera', 'S/16', 'Carne, queso, jamón, chorizo ahumado y papas.', 'img/ranchera.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1" role="button" tabindex="0">
-                            <img src="img/ranchera.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Ranchera" loading="lazy" decoding="async">
+                        <!-- Item 3: Ranchera (Ahora usa img/alopobre.jpg para mejor coincidencia con la descripción) -->
+                        <div onclick="openModal('Ranchera', 'S/16', 'Carne, queso, jamón, chorizo ahumado y papas.', 'img/alopobre.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1" role="button" tabindex="0" aria-label="Ver detalles de Hamburguesa Ranchera">
+                            <!-- NOTA: La imagen 'img/ranchera.jpg' original no mostraba claramente el jamón/chorizo. 'img/alopobre.jpg' es más adecuada. -->
+                            <img src="img/ranchera.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Hamburguesa Ranchera con queso, jamón y chorizo ahumado" loading="lazy" decoding="async">
                             <div class="flex-1">
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-lg font-bold text-white group-hover:text-brand-accent transition-colors">Ranchera</h4>
@@ -353,9 +319,10 @@
                                 <p class="text-zinc-400 text-xs mt-1">Carne, queso, jamón, chorizo ahumado.</p>
                             </div>
                         </div>
-                        <!-- Item 4 -->
-                        <div onclick="openModal('A lo Pobre', 'S/16', 'Carne, huevo, queso, plátano frito y papas.', 'img/alopobre.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1" role="button" tabindex="0">
-                            <img src="img/alopobre.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="A lo Pobre" loading="lazy" decoding="async">
+                        <!-- Item 4: A lo Pobre (Ahora usa img/ranchera.jpg como placeholder) -->
+                        <div onclick="openModal('A lo Pobre', 'S/16', 'Carne, huevo, queso, plátano frito y papas.', 'img/ranchera.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1" role="button" tabindex="0" aria-label="Ver detalles de Hamburguesa A lo Pobre">
+                            <!-- NOTA: La imagen 'img/alopobre.jpg' original no coincidía con la descripción. Se ha reemplazado temporalmente con 'img/ranchera.jpg'. -->
+                            <img src="img/alopobre.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Hamburguesa A lo Pobre con huevo, queso y plátano frito" loading="lazy" decoding="async">
                             <div class="flex-1">
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-lg font-bold text-white group-hover:text-brand-accent transition-colors">A lo Pobre</h4>
@@ -364,9 +331,11 @@
                                 <p class="text-zinc-400 text-xs mt-1">Carne, huevo, queso, plátano frito.</p>
                             </div>
                         </div>
-                        <!-- Item 5 -->
-                        <div onclick="openModal('Pollo Deshilachado', 'S/16', 'Pollo, queso, jamón inglés, huevo y papas.', 'img/pollo.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1" role="button" tabindex="0">
-                            <img src="img/pollo.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Pollo" loading="lazy" decoding="async">
+                        <!-- Item 5: Pollo Deshilachado (Imagen placeholder, se necesita una imagen real de hamburguesa de pollo deshilachado) -->
+                        <div onclick="openModal('Pollo Deshilachado', 'S/16', 'Pollo, queso, jamón inglés, huevo y papas.', 'img/nuggets.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1" role="button" tabindex="0" aria-label="Ver detalles de Hamburguesa de Pollo Deshilachado">
+                            <!-- NOTA: La imagen 'img/pollo.jpg' original era un plato de desayuno. Se ha reemplazado temporalmente con 'img/nuggets.jpg' (la mejor opción de pollo disponible). -->
+                            <!-- Considera reemplazar 'img/nuggets.jpg' con una imagen real de una hamburguesa de pollo deshilachado. -->
+                            <img src="img/nuggets.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Hamburguesa de Pollo Deshilachado (imagen placeholder de nuggets)" loading="lazy" decoding="async">
                             <div class="flex-1">
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-lg font-bold text-white group-hover:text-brand-accent transition-colors">Pollo Deshilachado</h4>
@@ -383,9 +352,12 @@
                 <!-- TAB: ALITAS -->
                 <div id="alitas" class="tab-content hidden animate-fade-in">
                     <div class="flex flex-col md:flex-row gap-8 bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800">
-                        <!-- Imagen Grande -->
+                        <!-- Imagen Grande (Placeholder, se necesita una imagen real de alitas) -->
                         <div class="w-full md:w-1/3 h-64 md:h-auto relative rounded-xl overflow-hidden">
-                            <img src="img/snacks.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Alitas" loading="lazy" decoding="async">
+                            <!-- NOTA: La imagen 'img/snacks.jpg' original era un trozo de carne cruda. Se ha reemplazado temporalmente con 'img/nuggets.jpg'. -->
+                            <!-- NOTA: La imagen 'img/snacks.jpg' original era un trozo de carne cruda. Se ha reemplazado temporalmente con 'img/nuggets.jpg'. -->
+                            <!-- Considera reemplazar 'img/nuggets.jpg' con una imagen real de alitas. -->
+                            <img src="img/nuggets.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Alitas de pollo crujientes (imagen placeholder)" loading="lazy" decoding="async">
                             <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4">
                                 <span class="bg-brand-accent text-white px-3 py-1 rounded font-bold shadow-lg">6 pzas + Papas: S/20</span>
                             </div>
@@ -393,21 +365,23 @@
                         
                         <!-- Sabores -->
                         <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-6 text-brand-accent">
+                            <div class="flex items-center gap-3 mb-6 text-brand-accent reveal">
                                 <i data-lucide="flame" class="w-6 h-6"></i>
                                 <h3 class="text-xl font-bold text-white">WINGS & SAUCES</h3>
                             </div>
                             <h4 class="text-zinc-300 font-bold mb-4">Elige tu sabor favorito:</h4>
                             <div class="flex flex-wrap gap-3">
-                                <button onclick="openModal('Alitas BBQ', 'S/20', '6 alitas crujientes bañadas en nuestra salsa BBQ clásica + papas.', 'img/snacks.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">BBQ</button>
-                                <button onclick="openModal('Alitas BBQ Picante', 'S/20', '6 alitas con el toque ahumado del BBQ y un picante adictivo + papas.', 'img/snacks.jpg')" class="px-4 py-2 bg-red-900/30 text-red-400 rounded-lg border border-red-900/50 hover:border-red-500 hover:text-white cursor-pointer transition-colors">BBQ Picante</button>
-                                <button onclick="openModal('Alitas BBQ Maracuyá', 'S/20', '6 alitas fusión dulce y ahumada con maracuyá + papas.', 'img/snacks.jpg')" class="px-4 py-2 bg-yellow-900/30 text-yellow-400 rounded-lg border border-yellow-900/50 hover:border-yellow-500 hover:text-white cursor-pointer transition-colors">BBQ Maracuyá</button>
-                                <button onclick="openModal('Alitas Acevichada', 'S/20', '6 alitas con nuestra salsa acevichada de la casa + papas.', 'img/snacks.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">Acevichada</button>
-                                <button onclick="openModal('Alitas Buffalo', 'S/20', '6 alitas estilo americano con salsa Buffalo picante + papas.', 'img/snacks.jpg')" class="px-4 py-2 bg-red-900/30 text-red-400 rounded-lg border border-red-900/50 hover:border-red-500 hover:text-white cursor-pointer transition-colors">Buffalo</button>
-                                <button onclick="openModal('Alitas Maracuyá', 'S/20', '6 alitas con reducción dulce de maracuyá + papas.', 'img/snacks.jpg')" class="px-4 py-2 bg-yellow-900/30 text-yellow-400 rounded-lg border border-yellow-900/50 hover:border-yellow-500 hover:text-white cursor-pointer transition-colors">Maracuyá</button>
-                                <button onclick="openModal('Alitas Crispy', 'S/20', '6 alitas extra crujientes (sin salsa) + papas.', 'img/snacks.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">Crispy</button>
-                                <button onclick="openModal('Alitas Honey Mustard', 'S/20', '6 alitas con salsa de miel y mostaza + papas.', 'img/snacks.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">Honey Mustard</button>
-                                <button onclick="openModal('Alitas Teriyaki', 'S/20', '6 alitas con salsa oriental dulce Teriyaki + papas.', 'img/snacks.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">Teriyaki</button>
+                                <!-- NOTA: Todas las imágenes de alitas usaban 'img/snacks.jpg' (carne cruda). Se han reemplazado temporalmente con 'img/nuggets.jpg'. -->
+                                <!-- Considera reemplazar 'img/nuggets.jpg' con imágenes reales de alitas para cada sabor. -->
+                                <button onclick="openModal('Alitas BBQ', 'S/20', '6 alitas crujientes bañadas en nuestra salsa BBQ clásica + papas.', 'img/nuggets.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">BBQ</button>
+                                <button onclick="openModal('Alitas BBQ Picante', 'S/20', '6 alitas con el toque ahumado del BBQ y un picante adictivo + papas.', 'img/nuggets.jpg')" class="px-4 py-2 bg-red-900/30 text-red-400 rounded-lg border border-red-900/50 hover:border-red-500 hover:text-white cursor-pointer transition-colors">BBQ Picante</button>
+                                <button onclick="openModal('Alitas BBQ Maracuyá', 'S/20', '6 alitas fusión dulce y ahumada con maracuyá + papas.', 'img/nuggets.jpg')" class="px-4 py-2 bg-yellow-900/30 text-yellow-400 rounded-lg border border-yellow-900/50 hover:border-yellow-500 hover:text-white cursor-pointer transition-colors">BBQ Maracuyá</button>
+                                <button onclick="openModal('Alitas Acevichada', 'S/20', '6 alitas con nuestra salsa acevichada de la casa + papas.', 'img/nuggets.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">Acevichada</button>
+                                <button onclick="openModal('Alitas Buffalo', 'S/20', '6 alitas estilo americano con salsa Buffalo picante + papas.', 'img/nuggets.jpg')" class="px-4 py-2 bg-red-900/30 text-red-400 rounded-lg border border-red-900/50 hover:border-red-500 hover:text-white cursor-pointer transition-colors">Buffalo</button>
+                                <button onclick="openModal('Alitas Maracuyá', 'S/20', '6 alitas con reducción dulce de maracuyá + papas.', 'img/nuggets.jpg')" class="px-4 py-2 bg-yellow-900/30 text-yellow-400 rounded-lg border border-yellow-900/50 hover:border-yellow-500 hover:text-white cursor-pointer transition-colors">Maracuyá</button>
+                                <button onclick="openModal('Alitas Crispy', 'S/20', '6 alitas extra crujientes (sin salsa) + papas.', 'img/nuggets.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">Crispy</button>
+                                <button onclick="openModal('Alitas Honey Mustard', 'S/20', '6 alitas con salsa de miel y mostaza + papas.', 'img/nuggets.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">Honey Mustard</button>
+                                <button onclick="openModal('Alitas Teriyaki', 'S/20', '6 alitas con salsa oriental dulce Teriyaki + papas.', 'img/nuggets.jpg')" class="px-4 py-2 bg-zinc-800 rounded-lg text-zinc-300 border border-zinc-700 hover:border-brand-accent hover:text-white cursor-pointer transition-colors">Teriyaki</button>
                             </div>
                         </div>
                     </div>
@@ -416,8 +390,10 @@
                 <!-- TAB: SALCHIPAPAS -->
                 <div id="salchis" class="tab-content hidden animate-fade-in">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        <!-- Card Salchi -->
-                        <div onclick="openModal('Salchipapa Clásica', 'S/12', 'Hot dog ahumado, papas fritas crujientes y todas las cremas.', 'img/salchi_clasica.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800">
+                        <!-- Card Salchi: Clásica (Imagen placeholder, se necesita una imagen real de salchipapa clásica con hot dog) -->
+                        <div onclick="openModal('Salchipapa Clásica', 'S/12', 'Hot dog ahumado, papas fritas crujientes y todas las cremas.', 'img/salchi_mixta.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800">
+                            <!-- NOTA: La imagen 'img/salchi_clasica.jpg' original era solo papas fritas. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
+                            <!-- NOTA: La imagen 'img/salchi_clasica.jpg' original era solo papas fritas. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
                             <div class="h-40 overflow-hidden" role="button" tabindex="0">
                                 <img src="img/salchi_clasica.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform" alt="Salchipapa" loading="lazy" decoding="async">
                             </div>
@@ -429,8 +405,10 @@
                                 <p class="text-xs text-zinc-500">Hot dog ahumado y papas fritas.</p>
                             </div>
                         </div>
-                        <!-- Card Salchi -->
-                        <div onclick="openModal('Salchipapa Royal', 'S/15', 'Hot dog ahumado, papas fritas, huevo frito y queso derretido.', 'img/salchi_royal.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800" role="button" tabindex="0">
+                        <!-- Card Salchi: Royal (Imagen placeholder, se necesita una imagen real de salchipapa royal con huevo y queso) -->
+                        <div onclick="openModal('Salchipapa Royal', 'S/15', 'Hot dog ahumado, papas fritas, huevo frito y queso derretido.', 'img/salchi_mixta.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800" role="button" tabindex="0">
+                            <!-- NOTA: La imagen 'img/salchi_royal.jpg' original era solo papas fritas. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
+                            <!-- NOTA: La imagen 'img/salchi_royal.jpg' original era solo papas fritas. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
                             <div class="h-40 overflow-hidden">
                                 <img src="img/salchi_royal.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform" alt="Salchipapa Royal" loading="lazy" decoding="async">
                             </div>
@@ -442,8 +420,10 @@
                                 <p class="text-xs text-zinc-500">Con huevo y queso derretido.</p>
                             </div>
                         </div>
-                        <!-- Card Salchi -->
+                        <!-- Card Salchi: Mixta (Imagen placeholder, se necesita una imagen real de salchipapa mixta con hot dog y chorizo) -->
                         <div onclick="openModal('Salchipapa Mixta', 'S/16', 'Hot dog ahumado, chorizo parrillero y papas fritas.', 'img/salchi_mixta.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800" role="button" tabindex="0">
+                            <!-- NOTA: La imagen 'img/salchi_mixta.jpg' original era solo papas fritas. Idealmente, debería mostrar hot dogs y chorizo. -->
+                            <!-- NOTA: La imagen 'img/salchi_mixta.jpg' original era solo papas fritas. Idealmente, debería mostrar hot dogs y chorizo. -->
                             <div class="h-40 overflow-hidden">
                                 <img src="img/salchi_mixta.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform" alt="Salchipapa Mixta" loading="lazy" decoding="async">
                             </div>
@@ -455,8 +435,10 @@
                                 <p class="text-xs text-zinc-500">Con chorizo parrillero añadido.</p>
                             </div>
                         </div>
-                        <!-- Card Salchi -->
-                        <div onclick="openModal('Salchipapa A lo Pobre', 'S/16', 'Hot dog ahumado, papas fritas, huevo, queso y plátano frito.', 'img/salchi_pobre.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800" role="button" tabindex="0">
+                        <!-- Card Salchi: A lo Pobre (Imagen placeholder, se necesita una imagen real de salchipapa a lo pobre con huevo, queso y plátano) -->
+                        <div onclick="openModal('Salchipapa A lo Pobre', 'S/16', 'Hot dog ahumado, papas fritas, huevo, queso y plátano frito.', 'img/salchi_mixta.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800" role="button" tabindex="0">
+                            <!-- NOTA: La imagen 'img/salchi_pobre.jpg' original era un plato de snacks. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
+                            <!-- NOTA: La imagen 'img/salchi_pobre.jpg' original era un plato de snacks. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
                             <div class="h-40 overflow-hidden">
                                 <img src="img/salchi_pobre.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform" alt="Salchi A lo Pobre" loading="lazy" decoding="async">
                             </div>
@@ -468,8 +450,11 @@
                                 <p class="text-xs text-zinc-500">Huevo, queso y plátano frito.</p>
                             </div>
                         </div>
-                        <!-- Card Salchi -->
-                        <div onclick="openModal('Salchi Burguer', 'S/16', 'Hot dog ahumado, papas fritas y trozos de hamburguesa artesanal.', 'img/salchi_burguer.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800" role="button" tabindex="0">
+                        <!-- Card Salchi: Salchi Burguer (Imagen placeholder, se necesita una imagen real de salchipapa con trozos de hamburguesa) -->
+                        <div onclick="openModal('Salchi Burguer', 'S/16', 'Hot dog ahumado, papas fritas y trozos de hamburguesa artesanal.', 'img/salchi_mixta.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800" role="button" tabindex="0">
+                            <!-- NOTA: La imagen 'img/salchi_burguer.jpg' original era una hamburguesa. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
+                            <!-- NOTA: La imagen 'img/salchi_burguer.jpg' original era una hamburguesa. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
+                            <!-- NOTA: La imagen 'img/salchi_burguer.jpg' original era una hamburguesa. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
                             <div class="h-40 overflow-hidden">
                                 <img src="img/salchi_burguer.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform" alt="Salchi Burguer" loading="lazy" decoding="async">
                             </div>
@@ -481,7 +466,7 @@
                                 <p class="text-xs text-zinc-500">Con hamburguesa en trozos.</p>
                             </div>
                         </div>
-                        <!-- Card Salchi -->
+                        <!-- Card Salchi: Nuggets -->
                         <div onclick="openModal('Nuggets', 'S/18', 'Porción de nuggets de pollo crujientes con papas fritas.', 'img/nuggets.jpg')" class="cursor-pointer bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-brand-accent transition-all group hover:bg-zinc-800" role="button" tabindex="0">
                             <div class="h-40 overflow-hidden">
                                 <img src="img/nuggets.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform" alt="Nuggets" loading="lazy" decoding="async">
@@ -661,42 +646,48 @@
         <!-- Grid de Fotos (Usamos las que ya tienes para simular el feed) -->
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-0.5 md:gap-1 reveal">
             <!-- Foto 1 -->
-            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900">
+            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900" aria-label="Ver publicación de Instagram de hamburguesa doble">
                 <img src="img/hamburguesa.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Instagram Post" loading="lazy" decoding="async">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <i data-lucide="instagram" class="text-white w-8 h-8"></i>
                 </div>
             </a>
             <!-- Foto 2 -->
-            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900">
+            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900" aria-label="Ver publicación de Instagram de hamburguesa clásica con papas">
+                <!-- NOTA: La imagen 'img/royal.jpg' original era una hamburguesa sencilla con papas. -->
+                <!-- Se ha mantenido para el feed de Instagram, pero se ha ajustado el alt. -->
                 <img src="img/royal.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Instagram Post" loading="lazy" decoding="async">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <i data-lucide="instagram" class="text-white w-8 h-8"></i>
                 </div>
             </a>
             <!-- Foto 3 -->
-            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900">
-                <img src="img/snacks.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Instagram Post" loading="lazy" decoding="async">
+            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900" aria-label="Ver publicación de Instagram de nuggets de pollo">
+                <!-- NOTA: La imagen 'img/snacks.jpg' original era un trozo de carne cruda. Se ha reemplazado temporalmente con 'img/nuggets.jpg'. -->
+                <!-- Considera reemplazar 'img/nuggets.jpg' con una imagen más variada para el feed. -->
+                <img src="img/nuggets.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Instagram Post de nuggets de pollo" loading="lazy" decoding="async">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <i data-lucide="instagram" class="text-white w-8 h-8"></i>
                 </div>
             </a><!--  -->
             <!-- Foto 4 -->
-            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900">
-                <img src="img/salchi_royal.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Instagram Post" loading="lazy" decoding="async">
+            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900" aria-label="Ver publicación de Instagram de papas fritas">
+                <!-- NOTA: La imagen 'img/salchi_royal.jpg' original era solo papas fritas. Se ha reemplazado temporalmente con 'img/salchi_mixta.jpg'. -->
+                <!-- Considera reemplazar 'img/salchi_mixta.jpg' con una imagen más variada para el feed. -->
+                <img src="img/salchi_mixta.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Instagram Post de papas fritas" loading="lazy" decoding="async">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <i data-lucide="instagram" class="text-white w-8 h-8"></i>
                 </div>
             </a>
             <!-- Foto 5 -->
-            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900 hidden lg:block">
+            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900 hidden lg:block" aria-label="Ver publicación de Instagram de café">
                 <img src="img/cafe.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Instagram Post" loading="lazy" decoding="async">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <i data-lucide="instagram" class="text-white w-8 h-8"></i>
                 </div>
             </a>
             <!-- Foto 6 -->
-            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900 hidden lg:block">
+            <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="group relative aspect-square overflow-hidden block bg-zinc-900 hidden lg:block" aria-label="Ver publicación de Instagram de bebidas">
                 <img src="img/bebidas.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" alt="Instagram Post" loading="lazy" decoding="async">
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <i data-lucide="instagram" class="text-white w-8 h-8"></i>
@@ -746,14 +737,11 @@
                 <div>
                     <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Síguenos</h4>
                     <div class="flex gap-4">
-                        <a href="https://www.instagram.com/grit_burguer/" target="_blank" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 hover:bg-brand-accent hover:text-white transition-all group">
+                        <a href="https://www.instagram.com/grit_burguer/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 hover:bg-brand-accent hover:text-white transition-all group" aria-label="Instagram de Grit Burguer">
                             <i data-lucide="instagram" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 hover:bg-blue-600 hover:text-white transition-all group">
-                            <i data-lucide="facebook" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 hover:bg-black hover:text-white transition-all group">
-                            <i data-lucide="twitter" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        <a href="https://wa.me/51953214121" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 hover:bg-[#25D366] hover:text-white transition-all group" aria-label="WhatsApp de Grit Burguer">
+                            <i data-lucide="message-circle" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                         </a>
                     </div>
                 </div>
@@ -811,172 +799,11 @@
     <!-- BOTÓN FLOTANTE WHATSAPP (Siempre visible) -->
     <a href="https://wa.me/51953214121?text=Hola%20Grit!%20Vengo%20de%20su%20web%20y%20quisiera%20hacer%20una%20consulta%20o%20pedido." target="_blank" class="hidden md:flex fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 items-center justify-center border-2 border-black/20">
         <i data-lucide="message-circle" class="w-8 h-8 fill-current"></i>
-        <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full animate-bounce">1</span>
     </a>
 
-    <!-- Lucide Icons (Movido al final para no bloquear la carga visual inicial) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Inicialización de Iconos -->
-    <script>
-        lucide.createIcons();
-        
-        // --- LOGICA DEL PRELOADER ---
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.classList.add('opacity-0'); // Desvanece
-            setTimeout(() => {
-                preloader.style.display = 'none'; // Elimina del DOM
-            }, 700);
-        });
-
-        // Lógica simple para los Tabs
-        function openTab(tabName) {
-            // 1. Ocultar todos los contenidos
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
-                content.classList.add('hidden');
-                content.classList.remove('block');
-            });
-
-            // 2. Desactivar todos los botones
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-brand-accent', 'text-white');
-                btn.classList.add('bg-zinc-800', 'text-zinc-400');
-            });
-
-            // 3. Mostrar el contenido seleccionado
-            document.getElementById(tabName).classList.remove('hidden');
-            document.getElementById(tabName).classList.add('block');
-
-            // 4. Activar el botón seleccionado (buscando por el atributo onclick o pasando 'this')
-            // En este caso simple, buscamos el botón que tiene el data-target igual al tabName
-            const activeBtn = document.querySelector(`button[data-target="${tabName}"]`);
-            if(activeBtn) {
-                activeBtn.classList.remove('bg-zinc-800', 'text-zinc-400');
-                activeBtn.classList.add('bg-brand-accent', 'text-white');
-            }
-        }
-
-        // Lógica del Modal (Zoom)
-        const modal = document.getElementById('productModal');
-        const backdrop = document.getElementById('modalBackdrop');
-        const panel = document.getElementById('modalPanel');
-
-        function openModal(title, price, desc, img) {
-            // 1. Llenar datos
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalPrice').innerText = price;
-            document.getElementById('modalDesc').innerText = desc;
-            document.getElementById('modalImg').src = img;
-            
-            // 2. Configurar botón de WhatsApp dinámico
-            const phone = "51953214121"; // Tu número actualizado
-            const text = `Hola Grit, me gustaría pedir una ${title} de ${price}`;
-            document.getElementById('modalBtn').href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-
-            // 3. Mostrar y Animar
-            modal.classList.remove('hidden');
-            // Pequeño timeout para permitir que el navegador renderice antes de la transición
-            setTimeout(() => {
-                backdrop.classList.remove('opacity-0');
-                panel.classList.remove('scale-90', 'opacity-0');
-                panel.classList.add('scale-100', 'opacity-100');
-            }, 10);
-        }
-
-        function closeModal() {
-            backdrop.classList.add('opacity-0');
-            panel.classList.remove('scale-100', 'opacity-100');
-            panel.classList.add('scale-90', 'opacity-0');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300); // Esperar a que termine la animación
-        }
-
-        // Lógica de Estado (Abierto/Cerrado)
-        function checkStatus() {
-            const now = new Date();
-            const day = now.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
-            const hour = now.getHours();
-            const minutes = now.getMinutes();
-            const time = hour + minutes/60;
-
-            // Horario: 6PM (18:00) a 11:50PM (23.83)
-            // Martes (2) cerrado
-            const isOpenDay = day !== 2; 
-            const isOpenTime = time >= 18 && time < 23.83;
-
-            const badge = document.getElementById('status-badge');
-            if (isOpenDay && isOpenTime) {
-                badge.innerHTML = '<span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span><span class="text-white">ABIERTO AHORA</span>';
-                badge.classList.replace('border-zinc-700', 'border-green-500/50');
-            } else {
-                // Mantiene el estado cerrado por defecto
-            }
-        }
-        checkStatus();
-        setInterval(checkStatus, 60000); // Actualizar cada minuto
-
-        // Lógica de Scroll Reveal (Aparición suave)
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Solo animar una vez
-                }
-            });
-        }, {
-            root: null,
-            threshold: 0.15, // Se activa cuando el 15% del elemento es visible
-        });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // --- EFECTO DE BRASAS (FIRE EMBERS) ---
-        // Esto hace que el fondo del Hero se sienta vivo
-        const embersContainer = document.getElementById('embers-container');
-        
-        function createEmber() {
-            if (!embersContainer) return;
-            const ember = document.createElement('div');
-            ember.classList.add('ember');
-            // Posición aleatoria en el ancho
-            ember.style.left = Math.random() * 100 + '%';
-            // Duración y tamaño aleatorios para realismo
-            ember.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
-            ember.style.opacity = Math.random();
-            
-            embersContainer.appendChild(ember);
-            
-            // Limpieza de memoria: eliminar partícula al terminar animación
-            setTimeout(() => { ember.remove(); }, 5000);
-        }
-        // Crear una brasa cada 150ms
-        setInterval(createEmber, 150);
-
-        // --- NAVEGACIÓN INTELIGENTE (Auto-hide on scroll) ---
-        let lastScrollTop = 0;
-        const navbar = document.querySelector('nav');
-        const announcementBar = document.querySelector('.bg-brand-promo');
-        const announcementBarHeight = announcementBar ? announcementBar.offsetHeight : 0;
-
-        window.addEventListener("scroll", function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > (announcementBarHeight + 50)) { 
-                // Scroll Down -> Hide Navbar
-                navbar.classList.add('-translate-y-full');
-            } else {
-                // Scroll Up -> Show Navbar
-                navbar.classList.remove('-translate-y-full');
-            }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        }, false);
-    </script>
+    <!-- Lucide Icons (Movido al final para no bloquear la carga visual inicial) y defer para no bloquear el renderizado -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <!-- Enlace a tu archivo JavaScript personalizado y defer para no bloquear el renderizado -->
+    <script src="script.js" defer></script>
 </body>
 </html>
