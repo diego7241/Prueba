@@ -206,4 +206,155 @@ document.addEventListener('DOMContentLoaded', () => {
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }, false);
     }
+
+    // =============================================
+    // NEXT LEVEL EFFECTS
+    // =============================================
+
+    // --- SCROLL PROGRESS BAR ---
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            scrollProgress.style.width = ((scrollTop / scrollHeight) * 100) + '%';
+        }, { passive: true });
+    }
+
+    // --- CUSTOM CURSOR (solo desktop con mouse) ---
+    const cursorDot  = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+    if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+        let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top  = mouseY + 'px';
+        });
+
+        (function animateRing() {
+            ringX += (mouseX - ringX) * 0.13;
+            ringY += (mouseY - ringY) * 0.13;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top  = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        })();
+
+        // Escalar anillo en hover de elementos interactivos
+        const interactives = document.querySelectorAll('a, button, [role="button"], .magnetic-btn');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.style.width  = '50px';
+                cursorRing.style.height = '50px';
+                cursorRing.style.borderColor = 'rgba(250,204,21,0.9)';
+                cursorDot.style.background = '#ea580c';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorRing.style.width  = '32px';
+                cursorRing.style.height = '32px';
+                cursorRing.style.borderColor = 'rgba(250,204,21,0.45)';
+                cursorDot.style.background = '#facc15';
+            });
+        });
+
+        // Ocultar cursor al salir de la ventana
+        document.addEventListener('mouseleave', () => {
+            cursorDot.style.opacity  = '0';
+            cursorRing.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            cursorDot.style.opacity  = '1';
+            cursorRing.style.opacity = '1';
+        });
+    }
+
+    // --- MAGNETIC BUTTONS ---
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width  / 2;
+            const y = e.clientY - rect.top  - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+
+    // --- ANIMATED COUNTERS ---
+    const counters = document.querySelectorAll('.counter');
+    if (counters.length && 'IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el     = entry.target;
+                const target = parseInt(el.getAttribute('data-target'), 10);
+                const start  = performance.now();
+                const dur    = 1800;
+
+                function tick(now) {
+                    const t = Math.min((now - start) / dur, 1);
+                    const eased = 1 - Math.pow(1 - t, 3); // ease-out-cubic
+                    el.textContent = Math.round(eased * target);
+                    if (t < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+                counterObserver.unobserve(el);
+            });
+        }, { threshold: 0.6 });
+        counters.forEach(c => counterObserver.observe(c));
+    }
+
+    // --- SPLIT TEXT ANIMATION (Hero headings) ---
+    document.querySelectorAll('.split-animate').forEach((el, elIdx) => {
+        const text    = el.textContent;
+        const isShort = text.trim().length <= 10;
+        el.textContent = '';
+
+        [...text].forEach((char, i) => {
+            const wrapper = document.createElement('span');
+            wrapper.className = 'char-wrapper';
+            const inner = document.createElement('span');
+            inner.className = 'split-char';
+            inner.textContent = char === ' ' ? '\u00A0' : char;
+            inner.style.transitionDelay = `${(elIdx * 120) + (i * (isShort ? 55 : 30))}ms`;
+            wrapper.appendChild(inner);
+            el.appendChild(wrapper);
+        });
+
+        // Trigger after a short delay
+        setTimeout(() => {
+            el.querySelectorAll('.split-char').forEach(c => c.classList.add('visible'));
+        }, 200 + elIdx * 100);
+    });
+
+    // --- CLOSING COUNTDOWN ---
+    function updateCountdown() {
+        const now      = new Date();
+        const day      = now.getDay();
+        const hour     = now.getHours();
+        const mins     = now.getMinutes();
+        const time     = hour + mins / 60;
+        const isOpen   = day !== 2 && time >= 18 && time < 23.83;
+        const isSoon   = isOpen && time >= 23;
+
+        const countdownEl   = document.getElementById('closing-countdown');
+        const countdownText = document.getElementById('countdown-text');
+        if (!countdownEl || !countdownText) return;
+
+        if (isSoon) {
+            const closing = new Date(); closing.setHours(23, 50, 0, 0);
+            const diff    = Math.max(closing - now, 0);
+            const m       = Math.floor(diff / 60000);
+            const s       = Math.floor((diff % 60000) / 1000);
+            countdownText.textContent = `Cierra en ${m}m ${s < 10 ? '0' + s : s}s`;
+            countdownEl.style.display = 'inline-flex';
+        } else {
+            countdownEl.style.display = 'none';
+        }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 });

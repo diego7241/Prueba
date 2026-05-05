@@ -92,6 +92,13 @@
 </head>
 <body class="antialiased selection:bg-brand-accent selection:text-white">
 
+    <!-- SCROLL PROGRESS BAR -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] w-0 z-[9999] pointer-events-none" style="background: linear-gradient(90deg, #facc15, #ea580c); box-shadow: 0 0 8px rgba(250,204,21,0.8);"></div>
+
+    <!-- CUSTOM CURSOR (solo desktop) -->
+    <div id="cursor-dot" class="hidden md:block fixed top-0 left-0 pointer-events-none z-[9998] w-2 h-2 rounded-full bg-brand-accent" style="transform: translate(-50%,-50%); box-shadow: 0 0 10px 2px rgba(250,204,21,0.7); transition: width .2s, height .2s, background .2s;"></div>
+    <div id="cursor-ring" class="hidden md:block fixed top-0 left-0 pointer-events-none z-[9997] w-8 h-8 rounded-full" style="transform: translate(-50%,-50%); border: 1.5px solid rgba(250,204,21,0.45); transition: width .3s, height .3s, border-color .3s;"></div>
+
     <!-- BARRA DE ANUNCIO SUPERIOR (Gancho de Venta) -->
     <div class="bg-brand-promo text-white text-[10px] md:text-xs font-bold text-center py-1.5 tracking-widest uppercase relative z-[60]">
         <span>🚀 Delivery Gratis en tu primer pedido — Menciona el código <span class="bg-white text-brand-promo px-1 rounded mx-1">GRITWEB</span> al pedir por WhatsApp</span>
@@ -111,6 +118,11 @@
                 <div id="status-badge" class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/80 border border-zinc-700 text-xs font-bold uppercase tracking-wider">
                     <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></span>
                     <span class="text-zinc-400">Cerrado</span>
+                </div>
+                <!-- Countdown de cierre (aparece solo cuando faltan <60 min) -->
+                <div id="closing-countdown" class="hidden md:hidden items-center gap-1.5 px-3 py-1 rounded-full bg-orange-950/50 border border-brand-promo/40 text-[10px] font-bold text-brand-promo uppercase tracking-wider animate-pulse">
+                    <i data-lucide="timer" class="w-3 h-3"></i>
+                    <span id="countdown-text">Cierra pronto</span>
                 </div>
                 <a href="#menu" class="text-sm font-medium text-zinc-300 hover:text-brand-accent transition-colors">Menú</a>
                 <a href="#ubicacion" class="text-sm font-medium text-zinc-300 hover:text-brand-accent transition-colors hidden sm:block">Ubicación</a>
@@ -162,6 +174,9 @@
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent"></div>
         </div>
 
+        <!-- Grain/Noise overlay cinematográfico -->
+        <div class="grain-overlay absolute inset-0 pointer-events-none z-[1]"></div>
+
         <!-- Contenedor de Brasas -->
         <div id="embers-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
 
@@ -183,21 +198,21 @@
             </span>
             <!-- TIPOGRAFÍA BREAKING SCHEMES -->
             <h1 class="flex flex-col items-center justify-center leading-[0.9] mb-8 text-shadow select-none px-2">
-                <span class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-impact text-outline tracking-wider hover:scale-105 transition-transform duration-500">SABOR</span>
-                <span class="text-2xl sm:text-3xl md:text-5xl font-graffiti text-brand-promo -rotate-3 -my-2 md:-my-4 z-10">Rebelde con</span>
-                <span class="text-6xl sm:text-7xl md:text-9xl lg:text-[10rem] font-impact text-brand-accent tracking-tighter hover:animate-glitch">GARRA</span>
+                <span class="split-animate text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-impact text-outline tracking-wider hover:scale-105 transition-transform duration-500">SABOR</span>
+                <span class="split-animate text-2xl sm:text-3xl md:text-5xl font-graffiti text-brand-promo -rotate-3 -my-2 md:-my-4 z-10">Rebelde con</span>
+                <span class="split-animate text-6xl sm:text-7xl md:text-9xl lg:text-[10rem] font-impact text-brand-accent tracking-tighter hover:animate-glitch">GARRA</span>
             </h1>
             <p class="text-base sm:text-lg md:text-xl text-zinc-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed px-4">
                 Fusionamos la rebeldía de la calle con la maestría culinaria. Hamburguesas artesanales smash y café de especialidad para los que no se conforman.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#menu" class="group relative px-8 py-4 bg-brand-accent text-white font-bold text-lg rounded-lg overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.5)]">
+                <a href="#menu" class="magnetic-btn group relative px-8 py-4 bg-brand-accent text-white font-bold text-lg rounded-lg overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(250,204,21,0.5)]">
                     <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1s_infinite]"></div>
                     <span class="flex items-center gap-2">
                         Ver Menú <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </span>
                 </a>
-                <a href="#ubicacion" class="px-8 py-4 bg-transparent border border-zinc-600 text-zinc-300 font-bold text-lg rounded-lg hover:bg-zinc-800 hover:text-white transition-all">
+                <a href="#ubicacion" class="magnetic-btn px-8 py-4 bg-transparent border border-zinc-600 text-zinc-300 font-bold text-lg rounded-lg hover:bg-zinc-800 hover:text-white transition-all">
                     Visítanos
                 </a>
             </div>
@@ -213,6 +228,39 @@
                 <span>SMASH BURGERS CON ACTITUD</span> <span>•</span> <span>PIDE TU GRIT AHORA</span> <span>•</span> <span>SABOR CON GARRA</span> <span>•</span> <span>MAGDALENA DEL MAR</span> <span>•</span>
                 <span>SMASH BURGERS CON ACTITUD</span> <span>•</span> <span>PIDE TU GRIT AHORA</span> <span>•</span> <span>SABOR CON GARRA</span> <span>•</span> <span>MAGDALENA DEL MAR</span> <span>•</span>
                 <span>SMASH BURGERS CON ACTITUD</span> <span>•</span> <span>PIDE TU GRIT AHORA</span> <span>•</span> <span>SABOR CON GARRA</span> <span>•</span> <span>MAGDALENA DEL MAR</span> <span>•</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION: Prueba Social con Contadores Animados -->
+    <section class="py-16 bg-brand-dark border-b border-zinc-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-accent/5 via-transparent to-brand-promo/5 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="stat-card text-center p-6 md:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-brand-accent/50 transition-all duration-300 group reveal">
+                    <div class="text-4xl md:text-6xl font-impact text-brand-accent leading-none tabular-nums">
+                        <span class="counter" data-target="150">0</span><span>+</span>
+                    </div>
+                    <p class="text-zinc-500 text-[10px] md:text-xs uppercase tracking-widest mt-3 group-hover:text-zinc-300 transition-colors">Reseñas 5 Estrellas</p>
+                </div>
+                <div class="stat-card text-center p-6 md:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-brand-accent/50 transition-all duration-300 group reveal">
+                    <div class="text-4xl md:text-6xl font-impact text-brand-accent leading-none">
+                        4.8<span class="text-2xl md:text-4xl text-brand-promo">★</span>
+                    </div>
+                    <p class="text-zinc-500 text-[10px] md:text-xs uppercase tracking-widest mt-3 group-hover:text-zinc-300 transition-colors">Rating Google</p>
+                </div>
+                <div class="stat-card text-center p-6 md:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-brand-accent/50 transition-all duration-300 group reveal">
+                    <div class="text-4xl md:text-6xl font-impact text-brand-accent leading-none">
+                        <span class="counter" data-target="7">0</span>
+                    </div>
+                    <p class="text-zinc-500 text-[10px] md:text-xs uppercase tracking-widest mt-3 group-hover:text-zinc-300 transition-colors">Sabores de Alitas</p>
+                </div>
+                <div class="stat-card text-center p-6 md:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-brand-accent/50 transition-all duration-300 group reveal">
+                    <div class="text-4xl md:text-6xl font-impact text-brand-accent leading-none">
+                        100<span class="text-2xl md:text-3xl">%</span>
+                    </div>
+                    <p class="text-zinc-500 text-[10px] md:text-xs uppercase tracking-widest mt-3 group-hover:text-zinc-300 transition-colors">Smash Artesanal</p>
+                </div>
             </div>
         </div>
     </section>
@@ -239,25 +287,25 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Promo 1 -->
-                    <div class="relative bg-zinc-900 border border-brand-promo/50 p-6 rounded-xl overflow-hidden group hover:bg-zinc-800 transition-colors">
+                    <div class="promo-shimmer relative bg-zinc-900 border border-brand-promo/50 p-6 rounded-xl overflow-hidden group hover:bg-zinc-800 transition-colors">
                         <div class="absolute top-0 right-0 bg-brand-promo text-white font-black px-4 py-1 text-sm rounded-bl-xl">S/39.00</div>
                         <h4 class="text-xl font-black text-white mb-2">12 ALITAS + PAPAS + CHICHA</h4>
                         <p class="text-zinc-400 text-sm">Elige 2 sabores de alitas. Incluye 1/2 litro de chicha morada.</p>
                     </div>
                     <!-- Promo 2 -->
-                    <div class="relative bg-zinc-900 border border-brand-promo/50 p-6 rounded-xl overflow-hidden group hover:bg-zinc-800 transition-colors">
+                    <div class="promo-shimmer relative bg-zinc-900 border border-brand-promo/50 p-6 rounded-xl overflow-hidden group hover:bg-zinc-800 transition-colors">
                         <div class="absolute top-0 right-0 bg-brand-promo text-white font-black px-4 py-1 text-sm rounded-bl-xl">S/30.00</div>
                         <h4 class="text-xl font-black text-white mb-2">DUO BURGUER ROYAL</h4>
                         <p class="text-zinc-400 text-sm">2 Hamburguesas Royal + 1/2 litro de chicha morada GRATIS.</p>
                     </div>
                     <!-- Promo 3 -->
-                    <div class="relative bg-zinc-900 border border-brand-promo/50 p-6 rounded-xl overflow-hidden group hover:bg-zinc-800 transition-colors">
+                    <div class="promo-shimmer relative bg-zinc-900 border border-brand-promo/50 p-6 rounded-xl overflow-hidden group hover:bg-zinc-800 transition-colors">
                         <div class="absolute top-0 right-0 bg-brand-promo text-white font-black px-4 py-1 text-sm rounded-bl-xl">S/30.00</div>
                         <h4 class="text-xl font-black text-white mb-2">SALCHIPAPA ROYAL x2</h4>
                         <p class="text-zinc-400 text-sm">Dos Salchipapas Royal + Inka Kola 600ml GRATIS.</p>
                     </div>
                     <!-- Promo 4 -->
-                    <div class="relative bg-zinc-900 border border-brand-promo/50 p-6 rounded-xl overflow-hidden group hover:bg-zinc-800 transition-colors">
+                    <div class="promo-shimmer relative bg-zinc-900 border border-brand-promo/50 p-6 rounded-xl overflow-hidden group hover:bg-zinc-800 transition-colors">
                         <div class="absolute top-0 right-0 bg-brand-promo text-white font-black px-4 py-1 text-sm rounded-bl-xl">S/29.90</div>
                         <h4 class="text-xl font-black text-white mb-2">COMBO PARA 2</h4>
                         <p class="text-zinc-400 text-sm">Salchipapa mixta para compartir + 1/2 litro de chicha GRATIS.</p>
@@ -279,8 +327,8 @@
                 <!-- TAB: HAMBURGUESAS -->
                 <div id="burgers" class="tab-content block animate-fade-in">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Item 1: Clásica (Carga inmediata, usa img/royal.jpg para mejor coincidencia) -->
-                        <div onclick="openModal('Clásica', 'S/12', 'Carne 100% artesanal, tomate, lechuga y papas.', 'img/royal.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1 overflow-hidden relative" role="button" tabindex="0" aria-label="Ver detalles de Hamburguesa Clásica">
+                        <!-- Item 1: Clásica -->
+                        <div data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.1" onclick="openModal('Clásica', 'S/12', 'Carne 100% artesanal, tomate, lechuga y papas.', 'img/royal.jpg')" class="cursor-pointer bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 flex gap-4 items-center transition-all duration-300 group hover:bg-zinc-800 hover:shadow-2xl hover:shadow-brand-accent/10 hover:-translate-y-1 overflow-hidden relative" role="button" tabindex="0" aria-label="Ver detalles de Hamburguesa Clásica">
                             <img src="img/royal.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Hamburguesa Clásica con carne artesanal, lechuga, tomate y papas fritas" decoding="async"
                                  srcset="img/royal-menu-sm.jpg 150w, img/royal-menu-md.jpg 300w, img/royal.jpg 600w"
                                  sizes="(max-width: 768px) 150px, 300px">
@@ -294,7 +342,7 @@
                             </div>
                         </div>
                         <!-- Item 2: Royal - HIGHLIGHT -->
-                        <div onclick="openModal('Royal', 'S/15', 'Carne, queso derretido, jamón inglés, huevo y papas.', 'img/hamburguesa.jpg')" class="relative cursor-pointer bg-gradient-to-br from-zinc-900 via-zinc-900 to-brand-wood/30 p-4 rounded-xl border border-brand-accent/30 flex gap-4 items-center transition-all duration-300 group hover:border-brand-accent hover:shadow-2xl hover:shadow-brand-accent/20 hover:-translate-y-1" role="button" tabindex="0" aria-label="Ver detalles de Hamburguesa Royal">
+                        <div data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.15" onclick="openModal('Royal', 'S/15', 'Carne, queso derretido, jamón inglés, huevo y papas.', 'img/hamburguesa.jpg')" class="relative cursor-pointer bg-gradient-to-br from-zinc-900 via-zinc-900 to-brand-wood/30 p-4 rounded-xl border border-brand-accent/30 flex gap-4 items-center transition-all duration-300 group hover:border-brand-accent hover:shadow-2xl hover:shadow-brand-accent/20 hover:-translate-y-1" role="button" tabindex="0" aria-label="Ver detalles de Hamburguesa Royal">
                             <div class="absolute -top-3 -right-2 bg-brand-accent text-black text-[10px] font-black px-3 py-1 rounded-full shadow-lg z-10 animate-pulse border border-yellow-200 uppercase tracking-wider">🔥 Top Ventas</div>
                             <img src="img/hamburguesa.jpg" class="w-32 h-32 object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform" alt="Hamburguesa Royal con doble carne, queso, jamón y huevo" decoding="async"
                                  srcset="img/hamburguesa-menu-sm.jpg 150w, img/hamburguesa-menu-md.jpg 300w, img/hamburguesa.jpg 600w"
@@ -803,6 +851,8 @@
 
     <!-- Lucide Icons (Movido al final para no bloquear la carga visual inicial) y defer para no bloquear el renderizado -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
+    <!-- Vanilla Tilt: efecto 3D en tarjetas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
     <!-- Enlace a tu archivo JavaScript personalizado y defer para no bloquear el renderizado -->
     <script src="script.js" defer></script>
 </body>
