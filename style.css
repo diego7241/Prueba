@@ -147,6 +147,12 @@ body {
 }
 .stat-card:hover::before { opacity: 1; }
 
+/* Sticky tabs offset for dynamic header hiding */
+.sticky-tabs {
+    top: var(--tabs-top, 76px);
+    transition: transform 0.25s ease, opacity 0.25s ease, top 0.25s ease;
+}
+
 /* Promo shimmer */
 .promo-shimmer::after {
     content: '';

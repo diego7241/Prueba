@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     // Inicialización de Iconos Lucide
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalImg.src = img;
         
         // 2. Configurar botón de WhatsApp dinámico
-        const phone = "51953214121"; // Tu número actualizado
+        const phone = "51941202704"; // Tu número actualizado
         const text = `Hola Grit, me gustaría pedir una ${title} de ${price}`;
         modalBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 
