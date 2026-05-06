@@ -191,18 +191,29 @@
     // --- NAVEGACIÓN INTELIGENTE (Auto-hide on scroll) ---
     let lastScrollTop = 0;
     const navbar = document.querySelector('nav');
+    const menuTabs = document.getElementById('menu-tabs');
+    const navbarHeight = navbar ? navbar.offsetHeight : 72;
     const announcementBar = document.querySelector('.bg-brand-promo');
     const announcementBarHeight = announcementBar ? announcementBar.offsetHeight : 0;
+
+    // Inicializar tabs debajo del navbar
+    if (menuTabs) menuTabs.style.top = navbarHeight + 'px';
 
     if (navbar) {
         window.addEventListener("scroll", function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > (announcementBarHeight + 50)) { 
+            const scrollingDown = scrollTop > lastScrollTop && scrollTop > (announcementBarHeight + 50);
+
+            if (scrollingDown) {
                 navbar.classList.add('-translate-y-full');
+                // Navbar oculto → tabs suben al tope
+                if (menuTabs) menuTabs.style.top = '0px';
             } else {
                 navbar.classList.remove('-translate-y-full');
+                // Navbar visible → tabs se colocan debajo de él
+                if (menuTabs) menuTabs.style.top = navbarHeight + 'px';
             }
+
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }, false);
     }

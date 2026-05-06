@@ -318,7 +318,7 @@
             </div>
 
             <!-- TABS DE NAVEGACIÓN -->
-            <div class="sticky top-[79px] z-30 bg-zinc-950 shadow-xl shadow-zinc-950/50 flex flex-wrap justify-center gap-2 md:gap-4 mb-12 border-b border-zinc-800 py-4 reveal">
+            <div id="menu-tabs" class="sticky top-0 z-30 bg-zinc-950 flex flex-wrap justify-center gap-2 md:gap-4 mb-12 border-b border-zinc-800 py-3 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.8)]" style="transition: top 0.3s;">
                 <button onclick="openTab('burgers')" class="tab-btn active px-6 py-2 rounded-full text-sm font-bold transition-all bg-brand-accent text-white" data-target="burgers">HAMBURGUESAS</button>
                 <button onclick="openTab('alitas')" class="tab-btn px-6 py-2 rounded-full text-sm font-bold transition-all bg-zinc-800 text-zinc-400 hover:text-white" data-target="alitas">ALITAS</button>
                 <button onclick="openTab('salchis')" class="tab-btn px-6 py-2 rounded-full text-sm font-bold transition-all bg-zinc-800 text-zinc-400 hover:text-white" data-target="salchis">SALCHIPAPAS</button>
@@ -860,10 +860,9 @@
     </a>
 
     <!-- Lucide Icons (Movido al final para no bloquear la carga visual inicial) y defer para no bloquear el renderizado -->
-    <script src="https://unpkg.com/lucide@latest" defer></script>
-    <!-- Vanilla Tilt: efecto 3D en tarjetas -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
-    <!-- Enlace a tu archivo JavaScript personalizado y defer para no bloquear el renderizado -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>if (typeof lucide !== 'undefined') lucide.createIcons();</script>
     <script src="script.js" defer></script>
 </body>
 </html>
